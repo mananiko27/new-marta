@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,10 @@
     body {
       margin: 0;
       font-family: 'Georgia', serif;
-      background-color: #f9f5ef;
+      background-color: #fdf7f0;
+      background-image: url('texture.jpg');
+      background-repeat: repeat;
+      background-size: cover;
       color: #4a4a4a;
       line-height: 1.6;
     }
@@ -32,10 +36,22 @@
     }
 
     .hero {
-      padding: 2rem;
+      padding: 3rem 1rem;
       text-align: center;
       font-style: italic;
-      background: url('texture.jpeg') no-repeat center/cover;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(3px);
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeInOut 12s infinite;
+    }
+
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; }
+      10%, 90% { opacity: 1; }
     }
 
     .section {
@@ -64,7 +80,7 @@
 </head>
 <body>
   <header>
-    <img src="your-logo.jpg" alt="mARTa Logo" height="80">
+    <img src="logo.jpg" alt="mARTa Logo" height="80">
     <nav>
       <a href="#home">Home</a>
       <a href="#martha">Martha</a>
@@ -75,24 +91,41 @@
   </header>
 
   <section class="hero">
-    <h1>Welcome to mARTa Handcrafts</h1>
-    <p>A space born from love, joy, and the art of childhood wonder.</p>
+    <p id="dynamic-text"></p>
   </section>
 
   <section id="martha" class="section">
     <h2>Martha</h2>
     <p>This space is born from love, devotion, and an eternal bond.</p>
-    <img src="art1.jpg" alt="Art fragment 1">
+    <img src="martha.jpg" alt="Martha">
     <p>It is dedicated to my sweet, blissful, strong-minded, and deeply artistic daughter, Martha — eternally 8 years old...</p>
-    <img src="art2.jpg" alt="Art fragment 2">
+    <img src="peach.jpg" alt="Peach drawing">
     <p>Her sense of color, shape, and beauty ran deep. Her drawings, her crafts, her playful eye – all were inimitable...</p>
-    <img src="art3.jpg" alt="Art fragment 3">
+    <img src="sunflower.jpg" alt="Sunflower">
     <p>Every piece in mARTa is crafted with care, heart, and a spark of childhood magic...</p>
-    <img src="art4.jpg" alt="Art fragment 4">
+    <img src="branch.jpg" alt="Branch drawing">
   </section>
 
   <footer>
     <p>With love and memory of Martha — mARTa Handcrafts</p>
   </footer>
+
+  <script>
+    const fragments = [
+      "This space is born from love, devotion, and an eternal bond.",
+      "Her drawings, her crafts, her playful eye – all were inimitable.",
+      "It’s about imagination, joy and simple forms that radiate warmth.",
+      "Decorations that evoke new sensations, yet take you back..."
+    ];
+
+    let i = 0;
+    const dynamicText = document.getElementById('dynamic-text');
+    function updateText() {
+      dynamicText.innerText = fragments[i];
+      i = (i + 1) % fragments.length;
+    }
+    updateText();
+    setInterval(updateText, 6000);
+  </script>
 </body>
 </html>
